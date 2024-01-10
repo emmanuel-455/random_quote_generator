@@ -2,16 +2,15 @@ let quote = document.getElementById("quote");
 let author = document.getElementById("author");
 let btn = document.getElementById("btn");
 
-const url = "https://api.quotable.io/random";
+const ApiUrl = "https://api.quotable.io/random";
 
-let getQuote = () => {
-  fetch(url)
-    .then((data) => data.json())
-    .then((item) => {
-      quote.innerText = item.content;
-      author.innerText = item.author;
-    });
-};
-
-window.addEventListener("load", getQuote);
-btn.addEventListener("click", getQuote);
+async function Api() {
+    let response = await fetch(ApiUrl);
+    let result = await response.json();
+    quote.innerHTML = result.content
+    author.innerHTML = result.author
+}
+btn.addEventListener("click", () => {
+    fetc()
+})
+window.addEventListener("load", Api());
